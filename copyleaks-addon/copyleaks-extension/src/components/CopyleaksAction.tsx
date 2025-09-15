@@ -13,9 +13,8 @@ interface ICopyLeaksProps {
     errorMsg:string
 }
 
-const configurationObj = getConfiguration();
-
 const CopyleaksAction = ({componentData, scanId, isLoading,errorMsg}: ICopyLeaksProps) => {
+    const configurationObj = getConfiguration();
     const WEB_HOOKS_URL = configurationObj && configurationObj['WEB_HOOKS_URL'] as string;  
     const WEB_HOOKS_NEWRESULT = configurationObj && configurationObj['WEB_HOOKS_NEWRESULT'] as string;
     const PROXY_SERVER_BASE_URL = configurationObj && configurationObj['PROXY_SERVER_BASE_URL'] as string; 
@@ -64,7 +63,7 @@ const CopyleaksAction = ({componentData, scanId, isLoading,errorMsg}: ICopyLeaks
                 }
             }
             const response = await copyleaksClient.post(`/scan/${scanId}`, data);
-            console.log(response)
+            
             setsProcessing(false)
         }catch(error){
             setsProcessing(false)

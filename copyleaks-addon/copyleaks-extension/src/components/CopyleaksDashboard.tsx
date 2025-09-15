@@ -30,7 +30,7 @@ const CopyleaksDashboard = ({ item }: InBundlePanelProps) => {
     useEffect(() => {
         const access_token = copyleaksClient.getToken();
         if(access_token!==null){
-            console.log(access_token)
+            
             const currentTime = new Date().getTime();
             const tokenDate = access_token[".expires"];
             const TokenTime = new Date(tokenDate).getTime()
@@ -104,7 +104,7 @@ const CopyleaksDashboard = ({ item }: InBundlePanelProps) => {
     const  resendScanResults = async(scanId:string) => {
         try{
             const response:any = await copyleaksClient.get(`/resend/${scanId}`);
-            console.log(response)
+            
             if(response.status===202){
                 setErrorMsg("The Scan request has been accepted. The scan result will be available shortly.")
             }
