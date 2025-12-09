@@ -31,7 +31,7 @@ const CopyleaksAction = ({componentData, scanId, isLoading,errorMsg}: ICopyLeaks
         ws.onclose = () => console.log('disconnected');
         ws.onerror = (err) => console.log("ws error");
         ws.onmessage = (event) => {
-            console.log("Message from server:", event.data);
+            //console.log("Message from server:", event.data);
             const data = JSON.parse(event.data);
             if (data.scannedDocument.scanId === scanId) {
                 setScanResult(data)
